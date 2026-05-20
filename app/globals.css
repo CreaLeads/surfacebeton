@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #1B2A4A;
+  --accent: #EA580C;
+  --accent-dark: #C2410C;
+  --muted: #64748B;
+  --soft: #F8FAFC;
+  --line: #E2E8F0;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #FFFFFF;
+  color: #1B2A4A;
+}
+
+.container-x {
+  @apply max-w-7xl mx-auto px-6 lg:px-10;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 bg-accent text-white font-semibold px-7 py-3.5 rounded-md hover:bg-accent-dark transition-all hover:shadow-lg hover:shadow-orange-900/15 hover:-translate-y-0.5;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 border border-white/80 text-white font-semibold px-7 py-3.5 rounded-md hover:bg-white hover:text-navy transition-all;
+}
+
+.btn-outline-navy {
+  @apply inline-flex items-center justify-center gap-2 border border-navy text-navy font-semibold px-7 py-3.5 rounded-md hover:bg-navy hover:text-white transition-all;
+}
+
+/* Section labels */
+.section-label {
+  @apply inline-block uppercase tracking-[0.18em] text-xs font-semibold text-accent mb-4;
+}
+
+/* Section titles */
+.section-title {
+  @apply font-serif text-4xl md:text-5xl font-bold text-navy leading-tight tracking-tight;
+}
+
+.section-subtitle {
+  @apply text-base md:text-lg text-muted max-w-2xl mt-4 leading-relaxed;
+}
+
+/* Animated underline under H2 */
+.title-underline {
+  display: inline-block;
+  height: 3px;
+  width: 0;
+  background: var(--accent);
+  margin-top: 16px;
+  border-radius: 2px;
+  will-change: width;
+}
+
+/* Card */
+.card-base {
+  @apply bg-white border border-line shadow-card hover:shadow-card-hover transition-all duration-300;
+  border-radius: 8px;
+}
+
+/* Range slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: #E2E8F0;
+  border-radius: 2px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #EA580C;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.35);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #EA580C;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.35);
+}
+
+/* Animated gradient CTA */
+.cta-gradient {
+  background: linear-gradient(120deg, #1B2A4A 0%, #1B2A4A 35%, #25365E 50%, #1B2A4A 65%, #1B2A4A 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 12s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Hero CSS-only intro — text always visible (opacity:1 by default),
+   only a subtle slide-up enhancement that won't hide content if the
+   animation engine doesn't run (e.g. headless / reduced-motion). */
+.hero-fade {
+  opacity: 1;
+  animation: heroSlide 0.8s ease both;
+}
+.hero-fade-1 { animation-delay: 0.05s; }
+.hero-fade-2 { animation-delay: 0.15s; }
+.hero-fade-3 { animation-delay: 0.25s; }
+.hero-fade-4 { animation-delay: 0.35s; }
+
+@keyframes heroSlide {
+  from { transform: translate3d(0, 14px, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade { animation: none; }
+}
+
+/* Will-change defaults for animated elements */
+[data-reveal-item],
+[data-gallery-card],
+[data-stat] {
+  will-change: transform, opacity;
+}
