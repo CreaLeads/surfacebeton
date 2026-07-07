@@ -1,50 +1,81 @@
 'use client';
 
 import Link from 'next/link';
-import PageHeader from '@/components/PageHeader';
-import SectionHeading from '@/components/SectionHeading';
 import { useEffect, useRef } from 'react';
+import PageHeader from '@/components/PageHeader';
 
 const solutions = [
   {
-    id: 'polyurethane',
-    title: 'Résine Polyuréthane',
-    subtitle: 'Performance et durabilité extrêmes',
+    id: 'epoxy-pu',
+    tag: '01',
+    title: 'Résine Époxy & Polyuréthane',
+    subtitle: 'Sols techniques haute performance',
     description:
-      'La résine polyuréthane offre une résistance exceptionnelle aux chocs thermiques et mécaniques. Solution idéale pour les environnements industriels exigeants.',
-    advantages: ['Résistance -40°C à +120°C', 'Élasticité absorption chocs', 'Antidérapant humide', 'Entretien minimal', 'Application rapide 24h'],
-    applications: ['Entrepôts', 'Ateliers', 'Chambres froides', 'Salles sport', 'Parkings'],
-    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1000',
+      "La combinaison des deux résines pro les plus performantes : l'époxy pour son esthétique lisse, sa résistance chimique et ses finitions haut de gamme — le polyuréthane pour sa résistance mécanique, ses propriétés antidérapantes et sa tenue extrême aux chocs thermiques.",
+    advantages: [
+      'Résistance mécanique et chimique extrême',
+      'Températures -40°C à +120°C (PU)',
+      'Surface lisse brillante ou antidérapante',
+      'Large palette de couleurs et finitions',
+      'Durabilité 10 à 15 ans',
+    ],
+    applications: ['Ateliers industriels', 'Entrepôts logistiques', 'Garages', 'Showrooms', 'Chambres froides', 'Parkings'],
+    img: '/hangar-stockage.jpg',
+    alt: 'Sol en résine époxy et polyuréthane pour hangar industriel',
   },
   {
-    id: 'epoxy',
-    title: 'Résine Époxy',
-    subtitle: 'Élégance et résistance chimique',
+    id: 'decoratif',
+    tag: '02',
+    title: 'Sols Décoratifs',
+    subtitle: 'Effets décoratifs sur mesure',
     description:
-      'Esthétique raffinée et performances techniques élevées. La résine époxy offre de multiples finitions pour sublimer vos espaces.',
-    advantages: ['Résistance chimique', 'Surface lisse brillante', 'Large palette couleurs', 'Imperméable', 'Durabilité 15 ans'],
-    applications: ['Garages', 'Showrooms', 'Magasins', "Halls d'entrée", 'Laboratoires'],
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000',
+      'Pour vos intérieurs résidentiels haut de gamme comme pour vos terrasses, garages et espaces commerciaux, les sols décoratifs SurfaceBéton allient esthétique et technicité. Effet marbré, flakes, quartz coloré ou granulat de marbre — un rendu unique pour chaque projet.',
+    advantages: [
+      'Effets marbré, flake, quartz, granulat',
+      'Pose intérieure et extérieure',
+      'Personnalisation complète des couleurs',
+      'Antidérapant selon usage',
+      'Rendu premium et sur mesure',
+    ],
+    applications: ['Halls d\'entrée', 'Salons', 'Terrasses', 'Contours de piscine', 'Garages résidentiels', 'Boutiques'],
+    img: '/resine-mat-salon.jpg',
+    alt: 'Sol résine décoratif effet marbré noir dans un intérieur',
   },
   {
     id: 'etancheite',
+    tag: '03',
     title: 'Étanchéité Liquide',
     subtitle: "Protection durable contre l'eau",
     description:
-      "Une membrane sans joint qui s'adapte à tous les supports pour une étanchéité parfaite et durable.",
-    advantages: ['Membrane sans joint', 'Supports variés', 'Résistance UV', 'Élasticité totale', 'Garantie décennale'],
-    applications: ['Toitures-terrasses', 'Balcons', 'Parkings dalle', 'Bassins'],
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000',
+      "Une membrane monocomposant sans joint qui épouse tous les supports et garantit une étanchéité parfaite. Solution éprouvée pour toitures-terrasses, balcons, parkings dalle, bassins et piscines.",
+    advantages: [
+      'Membrane continue sans joint',
+      'Adhérence sur tous supports',
+      'Résistance UV et élasticité totale',
+      'Application rapide',
+      'Garantie décennale',
+    ],
+    applications: ['Toitures-terrasses', 'Balcons', 'Parkings dalle', 'Bassins', 'Piscines'],
+    img: '/cool-roof-application.png',
+    alt: 'Application d\'étanchéité liquide sur toiture-terrasse',
   },
   {
-    id: 'coolroof',
-    title: 'Cool Roof',
-    subtitle: 'Innovation thermique et écologique',
+    id: 'thermicroof',
+    tag: '04',
+    title: 'ThermicRoof · Cool Roof',
+    subtitle: 'Peinture thermique nouvelle génération',
     description:
-      'Le revêtement réfléchissant qui réduit drastiquement la température de vos toitures et améliore votre performance énergétique.',
-    advantages: ["Réduction température jusqu'à 30°C", 'Économies énergie', 'Protection étanchéité', 'Normes environnementales'],
-    applications: ['Toitures industrielles', 'Entrepôts', 'Centres commerciaux'],
-    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1000',
+      "Peinture réflective haute performance qui réduit jusqu'à 30°C la température de vos toitures. ThermicRoof améliore le confort thermique, réduit les coûts de climatisation et prolonge la durée de vie de vos étanchéités.",
+    advantages: [
+      "Réduction jusqu'à -30°C en surface",
+      "-25% en moyenne sur la climatisation",
+      "Résistance UV extrême",
+      'Applicable bac acier, béton, bitume, membrane',
+      'Normes environnementales HQE',
+    ],
+    applications: ['Toitures industrielles', 'Entrepôts', 'Centres commerciaux', 'Bâtiments tertiaires', 'Copropriétés'],
+    img: '/industrie-parfumerie.jpg',
+    alt: 'Toiture traitée avec la peinture thermique ThermicRoof Cool Roof',
   },
 ];
 
@@ -71,34 +102,35 @@ function SolutionBlock({ s, i }) {
   }, []);
 
   return (
-    <section ref={ref} id={s.id} className={`py-28 ${i % 2 === 0 ? 'bg-white' : 'bg-soft'}`}>
+    <section ref={ref} id={s.id} className={`py-28 ${i % 2 === 0 ? 'bg-white' : 'bg-editorial'}`}>
       <div className="container-x">
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-14 items-center ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
-          <div data-sol-fade className="rounded-lg overflow-hidden shadow-card border border-line aspect-[4/3]">
-            <img src={s.img} alt={s.title} className="w-full h-full object-cover" />
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+          <div data-sol-fade className="relative rounded-xl overflow-hidden shadow-premium border border-line aspect-[4/3]">
+            <img src={s.img} alt={s.alt} loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div>
-            <div data-sol-fade className="section-label">{s.subtitle}</div>
-            <h2 data-sol-fade className="font-serif text-3xl md:text-4xl font-semibold text-navy mb-5 leading-tight">{s.title}</h2>
-            <p data-sol-fade className="text-muted leading-relaxed mb-7">{s.description}</p>
+            <div data-sol-fade className="tag-num mb-3">{s.tag}</div>
+            <div data-sol-fade className="eyebrow">{s.subtitle}</div>
+            <h2 data-sol-fade className="h-title mb-6">{s.title}</h2>
+            <p data-sol-fade className="text-muted text-[16px] leading-relaxed mb-8">{s.description}</p>
 
-            <div data-sol-fade className="mb-6">
-              <h3 className="text-xs uppercase tracking-widest font-semibold text-navy/60 mb-3">Avantages</h3>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div data-sol-fade className="mb-7">
+              <h3 className="text-[11px] uppercase tracking-[0.2em] font-semibold text-ink/70 mb-4">Avantages</h3>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {s.advantages.map((a) => (
-                  <li key={a} className="flex items-start gap-2 text-sm text-navy/85">
+                  <li key={a} className="flex items-start gap-2.5 text-sm text-ink/85">
                     <span className="text-accent mt-1">✓</span>
-                    {a}
+                    <span>{a}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div data-sol-fade className="mb-8">
-              <h3 className="text-xs uppercase tracking-widest font-semibold text-navy/60 mb-3">Applications</h3>
+            <div data-sol-fade className="mb-9">
+              <h3 className="text-[11px] uppercase tracking-[0.2em] font-semibold text-ink/70 mb-4">Applications</h3>
               <div className="flex flex-wrap gap-2">
                 {s.applications.map((a) => (
-                  <span key={a} className="bg-white border border-line text-navy text-xs font-medium px-3 py-1.5 rounded-sm">
+                  <span key={a} className="bg-white border border-line text-ink text-xs font-medium px-3 py-1.5 rounded-sm">
                     {a}
                   </span>
                 ))}
@@ -107,7 +139,7 @@ function SolutionBlock({ s, i }) {
 
             <div data-sol-fade>
               <Link href={`/contact?solution=${encodeURIComponent(s.title)}`} className="btn-primary">
-                Obtenir un devis pour ce produit
+                Demander un devis pour ce produit
               </Link>
             </div>
           </div>
@@ -121,56 +153,42 @@ export default function SolutionsPage() {
   return (
     <>
       <PageHeader
-        title="Nos Solutions"
-        subtitle="Quatre technologies de revêtement pour répondre à chaque enjeu — du résidentiel haut de gamme aux environnements industriels."
+        eyebrow="Nos savoir-faire"
+        title="Solutions de revêtements techniques."
+        subtitle="Quatre expertises pour couvrir tous vos besoins en résine et traitement de toiture."
         breadcrumb="Solutions"
       />
 
       {solutions.map((s, i) => <SolutionBlock key={s.id} s={s} i={i} />)}
 
-      {/* Marketing Digital — partenaire CreaLeads */}
-      <section className="py-28 bg-navy text-white">
+      {/* Marketing Digital partner */}
+      <section className="py-24 bg-ink text-white">
         <div className="container-x">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             <div>
-              <span className="inline-block text-[10px] uppercase tracking-widest font-semibold text-accent border border-accent/50 px-2 py-1 rounded-sm mb-5">
-                Partenaire →
-              </span>
-              <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-5 leading-tight">
-                Marketing Digital — CreaLeads
+              <div className="tag-num mb-3">05 · Partenaire</div>
+              <div className="eyebrow !text-accent">Marketing Digital</div>
+              <h2 className="font-display text-3xl md:text-4xl font-medium mb-6 leading-tight text-white">
+                <span className="italic-serif text-accent">CreaLeads</span> — génération de leads pour artisans.
               </h2>
-              <p className="text-white/75 leading-relaxed mb-7">
-                Génération de leads qualifiés et acquisition digitale clé en
-                main pour les artisans. SEO, ads ciblées, landing pages
-                conversion — un partenariat exclusif pour développer votre
-                activité.
+              <p className="text-white/70 leading-relaxed mb-8">
+                Notre partenaire acquisition digitale : campagnes Meta Ads,
+                landing pages haute conversion, SEO local. Une offre dédiée
+                aux artisans du bâtiment pour développer votre activité.
               </p>
-              <a
-                href="https://crealeads.fr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-              >
+              <a href="https://crealeads.fr" target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Découvrir CreaLeads →
               </a>
             </div>
-            <div className="rounded-lg overflow-hidden border border-white/10 shadow-xl aspect-[4/3]">
+            <div className="rounded-xl overflow-hidden border border-white/10 shadow-xl aspect-[4/3] bg-graphite">
               <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000"
-                alt="Marketing Digital"
+                src="/hall-local-professionnel.jpg"
+                alt="Espace professionnel avec revêtement premium — projet accompagné par CreaLeads"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Formation redirect */}
-      <section className="py-16 bg-white border-t border-line">
-        <div className="container-x text-center">
-          <h3 className="font-serif text-2xl font-semibold text-navy mb-3">Formation Résine Décorative</h3>
-          <p className="text-muted mb-7">Vous êtes professionnel ? Découvrez notre formation 3 jours.</p>
-          <Link href="/#formation" className="btn-outline-navy">Voir la formation</Link>
         </div>
       </section>
     </>

@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Logo from './Logo';
 
 const links = [
   { href: '/solutions', label: 'Solutions' },
   { href: '/realisations', label: 'Réalisations' },
-  { href: '/#formation', label: 'Formation' },
-  { href: '/distribution', label: 'Distribution' },
+  { href: '/distribution', label: 'ThermicRoof' },
   { href: '/a-propos', label: 'À propos' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -25,17 +25,16 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md transition-all duration-300 ${
         scrolled
-          ? 'shadow-[0_1px_0_#E2E8F0] border-b-2 border-accent'
+          ? 'shadow-[0_1px_0_#E5E1DA,0_10px_25px_-15px_rgba(10,14,26,0.15)] border-b-2 border-accent'
           : 'border-b border-line'
       }`}
-      style={{ height: 72 }}
+      style={{ height: 76 }}
     >
-      <nav className="container-x flex items-center justify-between h-[72px]">
-        <Link href="/" className="text-xl font-bold tracking-tight animate-logo-in">
-          <span className="font-serif text-navy">Surface</span>
-          <span className="font-serif text-accent">Béton</span>
+      <nav className="container-x flex items-center justify-between h-[76px]" aria-label="Navigation principale">
+        <Link href="/" aria-label="SurfaceBéton — Accueil">
+          <Logo />
         </Link>
 
         <ul className="hidden lg:flex items-center gap-9">
@@ -43,7 +42,7 @@ export default function Navbar() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className="text-navy/85 hover:text-accent font-medium text-[14px] transition-colors"
+                className="text-ink/85 hover:text-accent font-medium text-[14px] tracking-tight transition-colors"
               >
                 {l.label}
               </Link>
@@ -53,15 +52,15 @@ export default function Navbar() {
 
         <Link
           href="/contact"
-          className="hidden lg:inline-flex bg-accent text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-accent-dark transition-all"
+          className="hidden lg:inline-flex bg-ink text-white text-[13px] font-semibold px-5 py-2.5 rounded-md hover:bg-accent transition-all"
         >
-          Demander un devis
+          Devis gratuit
         </Link>
 
         <button
-          aria-label="Menu"
+          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
           onClick={() => setOpen(!open)}
-          className="lg:hidden text-navy p-2"
+          className="lg:hidden text-ink p-2"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             {open ? (
@@ -88,7 +87,7 @@ export default function Navbar() {
                 <Link
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block py-3 text-navy font-medium border-b border-line"
+                  className="block py-3 text-ink font-medium border-b border-line"
                 >
                   {l.label}
                 </Link>
@@ -100,7 +99,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="block text-center bg-accent text-white font-semibold py-3 rounded-md"
               >
-                Demander un devis
+                Devis gratuit
               </Link>
             </li>
           </ul>

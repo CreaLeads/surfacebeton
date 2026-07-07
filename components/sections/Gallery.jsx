@@ -4,17 +4,20 @@ import { useEffect, useRef, useState } from 'react';
 import SectionHeading from '@/components/SectionHeading';
 
 const projects = [
-  { title: 'Résine Sol Particulier', surface: '35m²', tags: ['Particulier', 'Intérieur'], img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800' },
-  { title: 'Parking Résine Polyuréthane', surface: '600m²', tags: ['Professionnel', 'Intérieur'], img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800' },
-  { title: 'Cool Roof Avant/Après', surface: '800m²', tags: ['Professionnel', 'Extérieur'], img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800' },
-  { title: 'Parking Privé', surface: '2000m²', tags: ['Professionnel', 'Extérieur'], img: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800' },
-  { title: 'Garage Résine Époxy', surface: '40m²', tags: ['Particulier', 'Intérieur'], img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800' },
-  { title: 'Entrepôt Logistique', surface: '5000m²', tags: ['Professionnel', 'Intérieur'], img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800' },
+  { title: 'Résine décorative — hall d\'entrée', surface: '65 m²', tags: ['Particulier', 'Intérieur'], img: '/resine-deco-hall-entree.jpg', alt: 'Sol en résine décorative gris anthracite pour hall d\'entrée résidentiel' },
+  { title: 'Terrasse résine granulat', surface: '90 m²', tags: ['Particulier', 'Extérieur'], img: '/terrasse-gravier.jpg', alt: 'Terrasse extérieure en résine granulat gris avec canapé' },
+  { title: 'Hangar de stockage — époxy', surface: '1 200 m²', tags: ['Professionnel', 'Intérieur'], img: '/hangar-stockage.jpg', alt: 'Hangar de stockage avec sol en résine époxy brillante' },
+  { title: 'Terrasse piscine — rose des vents', surface: '75 m²', tags: ['Particulier', 'Extérieur'], img: '/piscine-rose.jpg', alt: 'Terrasse piscine en résine gravier avec motif rose des vents' },
+  { title: 'Garage résidentiel — flake', surface: '45 m²', tags: ['Particulier', 'Intérieur'], img: '/garage-flake-clair.jpg', alt: 'Garage résidentiel avec sol résine époxy à flakes gris' },
+  { title: 'Atelier automobile — époxy antidérapant', surface: '380 m²', tags: ['Professionnel', 'Intérieur'], img: '/atelier-automobile.jpg', alt: 'Atelier automobile avec sol résine époxy antidérapant et marquage jaune' },
+  { title: 'Entrepôt logistique', surface: '2 400 m²', tags: ['Professionnel', 'Intérieur'], img: '/entrepot-logistique.jpg', alt: 'Sol résine époxy pour entrepôt logistique grande surface' },
+  { title: 'Parking souterrain', surface: '3 500 m²', tags: ['Professionnel', 'Extérieur'], img: '/parking-souterrain.jpg', alt: 'Parking souterrain avec revêtement en résine polyuréthane' },
+  { title: 'Grand garage flake', surface: '120 m²', tags: ['Particulier', 'Intérieur'], img: '/garage-anthracite.jpg', alt: 'Grand garage avec sol résine époxy flake anthracite' },
 ];
 
 const filters = ['Tous', 'Particulier', 'Professionnel', 'Intérieur', 'Extérieur'];
 
-export default function Gallery() {
+export default function Gallery({ extended = false }) {
   const [active, setActive] = useState('Tous');
   const gridRef = useRef(null);
 
@@ -42,23 +45,25 @@ export default function Gallery() {
   }, [active]);
 
   return (
-    <section id="realisations" className="py-28 bg-white">
+    <section id="realisations" className="py-28 bg-white" aria-label="Nos réalisations">
       <div className="container-x">
         <SectionHeading
           label="Portfolio"
-          title="Nos Réalisations"
-          subtitle="Une sélection de chantiers livrés en Île-de-France."
+          title="Nos réalisations en Île-de-France."
+          subtitle="Une sélection de chantiers livrés pour particuliers, professionnels et industriels."
         />
 
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 mb-12" role="tablist" aria-label="Filtres de réalisations">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setActive(f)}
+              role="tab"
+              aria-selected={active === f}
               className={`px-5 py-2 rounded-md font-medium text-sm transition-all ${
                 active === f
-                  ? 'bg-navy text-white'
-                  : 'bg-white text-navy border border-line hover:border-accent hover:text-accent'
+                  ? 'bg-ink text-white'
+                  : 'bg-white text-ink border border-line hover:border-accent hover:text-accent'
               }`}
             >
               {f}
@@ -68,33 +73,34 @@ export default function Gallery() {
 
         <div ref={gridRef} className="grid grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((p, i) => (
-            <div
+            <article
               key={p.title + i}
               data-gallery-card
-              className={`group relative overflow-hidden rounded-lg cursor-pointer border border-line ${
+              className={`group relative overflow-hidden rounded-lg cursor-pointer border border-line bg-soft ${
                 i % 3 === 0 ? 'lg:row-span-2' : ''
               }`}
             >
               <img
                 src={p.img}
-                alt={p.title}
+                alt={p.alt}
+                loading="lazy"
                 className={`w-full object-cover transition-transform duration-[900ms] group-hover:scale-105 ${
-                  i % 3 === 0 ? 'h-full min-h-[320px] lg:min-h-[520px]' : 'h-72'
+                  i % 3 === 0 ? 'h-full min-h-[320px] lg:min-h-[540px]' : 'h-72'
                 }`}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <div className="flex flex-wrap gap-2 mb-2">
+                <div className="flex flex-wrap gap-1.5 mb-3">
                   {p.tags.map((t) => (
-                    <span key={t} className="text-[10px] uppercase tracking-widest bg-accent px-2 py-0.5 rounded-sm font-semibold">
+                    <span key={t} className="text-[10px] uppercase tracking-[0.18em] bg-accent px-2 py-0.5 rounded-sm font-semibold">
                       {t}
                     </span>
                   ))}
                 </div>
-                <h3 className="font-serif font-semibold text-lg">{p.title}</h3>
-                <p className="text-sm text-white/80">{p.surface}</p>
+                <h3 className="font-display text-lg font-medium leading-tight">{p.title}</h3>
+                <p className="text-sm text-white/80 mt-1">{p.surface}</p>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

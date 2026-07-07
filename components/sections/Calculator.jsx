@@ -41,20 +41,19 @@ export default function Calculator() {
   }, [total]);
 
   return (
-    <section className="py-28 bg-soft">
+    <section className="py-28 bg-soft" aria-label="Estimation en ligne">
       <div className="container-x">
         <SectionHeading
-          label="Simulateur"
-          title="Estimez votre projet"
+          label="Estimation en ligne"
+          title="Estimez votre projet en 30 secondes."
           subtitle="Estimation indicative pour particuliers — devis précis gratuit sous 48h."
         />
 
-        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-card border border-line p-8 md:p-12">
-          {/* Étape 1 */}
+        <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-card border border-line p-8 md:p-12">
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-7 h-7 rounded-full bg-accent text-white font-semibold flex items-center justify-center text-sm">1</span>
-              <h3 className="font-serif font-semibold text-lg text-navy">Type de résine</h3>
+              <h3 className="font-display text-lg text-ink">Type de résine</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {resines.map((r) => {
@@ -65,11 +64,11 @@ export default function Calculator() {
                     onClick={() => setResine(r)}
                     className={`text-left p-5 rounded-md border transition-all ${
                       sel
-                        ? 'border-accent bg-orange-50 scale-[1.03] shadow-card'
-                        : 'border-line hover:border-slate-300'
+                        ? 'border-accent bg-accent-soft scale-[1.03] shadow-card'
+                        : 'border-line hover:border-ink/30'
                     }`}
                   >
-                    <div className="font-semibold text-navy">{r.label}</div>
+                    <div className="font-semibold text-ink">{r.label}</div>
                     <div className="text-sm text-muted mt-1">à partir de {r.price}€/m²</div>
                   </button>
                 );
@@ -77,12 +76,11 @@ export default function Calculator() {
             </div>
           </div>
 
-          {/* Étape 2 */}
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-7 h-7 rounded-full bg-accent text-white font-semibold flex items-center justify-center text-sm">2</span>
-              <h3 className="font-serif font-semibold text-lg text-navy">Surface</h3>
-              <span className="ml-auto font-serif text-2xl font-semibold text-accent">{surface} m²</span>
+              <h3 className="font-display text-lg text-ink">Surface</h3>
+              <span className="ml-auto font-display text-2xl text-accent">{surface} m²</span>
             </div>
             <input
               type="range"
@@ -92,6 +90,7 @@ export default function Calculator() {
               value={surface}
               onChange={(e) => setSurface(Number(e.target.value))}
               className="w-full"
+              aria-label="Surface en mètres carrés"
             />
             <div className="flex justify-between text-xs text-muted mt-2">
               <span>10 m²</span>
@@ -99,10 +98,9 @@ export default function Calculator() {
             </div>
           </div>
 
-          {/* Résultat */}
           <div className="cta-gradient text-white rounded-lg p-10 text-center">
-            <div className="text-xs uppercase tracking-widest text-white/70 mb-3">Estimation</div>
-            <div className="font-serif text-5xl md:text-6xl font-semibold mb-2">
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/70 mb-3">Estimation indicative</div>
+            <div className="font-display text-5xl md:text-6xl font-medium mb-3">
               ~ <span ref={totalRef}>{total.toLocaleString('fr-FR')} €</span>
             </div>
             <div className="text-white/70 text-sm mb-6">

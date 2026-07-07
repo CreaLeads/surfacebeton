@@ -5,7 +5,6 @@ import Stats from '@/components/sections/Stats';
 import Solutions from '@/components/sections/Solutions';
 import Why from '@/components/sections/Why';
 import Gallery from '@/components/sections/Gallery';
-import Formation from '@/components/sections/Formation';
 import DistributionTeaser from '@/components/sections/DistributionTeaser';
 import Calculator from '@/components/sections/Calculator';
 import Testimonials from '@/components/sections/Testimonials';
@@ -19,7 +18,6 @@ export default function Home() {
       <Solutions />
       <Why />
       <Gallery />
-      <Formation />
       <DistributionTeaser />
       <Calculator />
       <Testimonials />

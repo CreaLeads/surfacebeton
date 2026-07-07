@@ -7,8 +7,9 @@ export default function RealisationsPage() {
   return (
     <>
       <PageHeader
-        title="Nos Réalisations"
-        subtitle="Une sélection de chantiers livrés en Île-de-France — particuliers et professionnels."
+        eyebrow="Portfolio"
+        title="Nos réalisations en Île-de-France."
+        subtitle="Une sélection de chantiers livrés — résine époxy, polyuréthane, sols décoratifs et étanchéité."
         breadcrumb="Réalisations"
       />
       <Gallery extended />

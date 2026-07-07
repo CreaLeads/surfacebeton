@@ -1,41 +1,46 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import SectionHeading from '@/components/SectionHeading';
 
 const items = [
   {
-    title: 'Résine Polyuréthane',
-    desc: 'Performance et durabilité extrêmes',
-    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600',
-    href: '/solutions#polyurethane',
+    tag: '01',
+    title: 'Résine Époxy & Polyuréthane',
+    desc: 'Sols techniques haute performance pour industrie, garages, ateliers et espaces professionnels.',
+    keywords: ['résine époxy', 'résine polyuréthane', 'sol résine professionnel'],
+    img: '/hangar-stockage.jpg',
+    alt: 'Sol en résine époxy brillante — hangar industriel professionnel',
+    href: '/solutions#epoxy-pu',
   },
   {
-    title: 'Résine Époxy',
-    desc: 'Élégance et résistance chimique',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600',
-    href: '/solutions#epoxy',
+    tag: '02',
+    title: 'Sols Décoratifs',
+    desc: 'Effet marbré, flake, quartz, granulat — des sols résine sur mesure pour intérieurs et extérieurs.',
+    keywords: ['sol résine décoratif', 'résine flake', 'quartz', 'résine granulat'],
+    img: '/resine-mat-salon.jpg',
+    alt: 'Sol résine décoratif effet marbré noir dans un intérieur design',
+    href: '/solutions#decoratif',
   },
   {
+    tag: '03',
     title: 'Étanchéité Liquide',
-    desc: "Protection durable contre l'eau",
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600',
+    desc: "Membrane monocomposant sans joint pour toitures-terrasses, balcons, parkings dalle et bassins.",
+    keywords: ['étanchéité liquide', 'étanchéité toiture', 'étanchéité terrasse'],
+    img: '/cool-roof-application.png',
+    alt: 'Application d\'étanchéité liquide sur toiture-terrasse',
     href: '/solutions#etancheite',
   },
   {
-    title: 'Cool Roof',
-    desc: 'Innovation thermique et écologique',
-    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600',
-    href: '/solutions#coolroof',
-  },
-  {
-    title: 'Marketing Digital — CreaLeads',
-    desc: "Génération de leads qualifiés et acquisition digitale clé en main pour les artisans.",
-    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600',
-    href: 'https://crealeads.fr',
-    external: true,
-    badge: 'Partenaire →',
+    tag: '04',
+    title: 'ThermicRoof · Cool Roof',
+    desc: "Peinture thermique réflective : jusqu'à 30°C de réduction sur toitures industrielles et commerciales.",
+    keywords: ['cool roof', 'peinture thermique', 'peinture réfléchissante toiture'],
+    img: '/industrie-parfumerie.jpg',
+    alt: 'Toiture industrielle traitée avec peinture thermique ThermicRoof Cool Roof',
+    href: '/solutions#thermicroof',
   },
 ];
 
@@ -52,7 +57,7 @@ export default function Solutions() {
       ctx = gsap.context(() => {
         gsap.fromTo(
           '[data-sol-card]',
-          { y: 50, opacity: 0 },
+          { y: 40, opacity: 0 },
           {
             y: 0, opacity: 1, duration: 0.7, ease: 'power2.out', stagger: 0.15,
             scrollTrigger: { trigger: gridRef.current, start: 'top 85%' },
@@ -64,57 +69,44 @@ export default function Solutions() {
   }, []);
 
   return (
-    <section className="py-28 bg-white">
+    <section className="py-28 bg-white" id="solutions">
       <div className="container-x">
         <SectionHeading
-          label="Nos prestations"
-          title="Solutions de revêtement"
-          subtitle="Des technologies adaptées à chaque environnement, du résidentiel haut de gamme aux espaces industriels."
+          label="Nos savoir-faire"
+          title="Quatre expertises, une exigence."
+          subtitle="Du sol technique au traitement thermique de toiture — SurfaceBéton conçoit, applique et garantit chaque revêtement."
         />
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.map((it) => {
-            const Inner = (
-              <>
-                <div className="aspect-[5/3] overflow-hidden">
-                  <img
-                    src={it.img}
-                    alt={it.title}
-                    className="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-7">
-                  {it.badge && (
-                    <span className="inline-block text-[10px] uppercase tracking-widest font-semibold text-accent border border-accent/40 px-2 py-1 rounded-sm mb-3">
-                      {it.badge}
-                    </span>
-                  )}
-                  <h3 className="font-serif text-xl font-semibold text-navy mb-2">{it.title}</h3>
-                  <p className="text-sm text-muted leading-relaxed mb-4">{it.desc}</p>
-                  <span className="text-accent font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                    En savoir plus <span>→</span>
-                  </span>
-                </div>
-              </>
-            );
-            const cls = 'group block card-base overflow-hidden hover:-translate-y-1.5';
-            return it.external ? (
-              <a
-                key={it.title}
-                href={it.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-sol-card
-                className={cls}
-              >
-                {Inner}
-              </a>
-            ) : (
-              <Link key={it.title} href={it.href} data-sol-card className={cls}>
-                {Inner}
-              </Link>
-            );
-          })}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {items.map((it) => (
+            <Link
+              key={it.title}
+              href={it.href}
+              data-sol-card
+              className="group block card-base overflow-hidden hover:-translate-y-1"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden bg-soft">
+                <img
+                  src={it.img}
+                  alt={it.alt}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-105"
+                />
+                <span className="absolute top-4 left-4 font-display italic text-white text-sm bg-ink/70 backdrop-blur px-3 py-1 rounded-sm">
+                  {it.tag}
+                </span>
+              </div>
+              <div className="p-8">
+                <h3 className="font-display text-2xl font-medium text-ink mb-3 leading-tight tracking-tight">
+                  {it.title}
+                </h3>
+                <p className="text-[15px] text-muted leading-relaxed mb-5">{it.desc}</p>
+                <span className="btn-ghost">
+                  Découvrir <span>→</span>
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

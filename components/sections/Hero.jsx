@@ -17,7 +17,7 @@ export default function Hero() {
       ctx = gsap.context(() => {
         if (bgRef.current) {
           gsap.to(bgRef.current, {
-            yPercent: 18,
+            yPercent: 12,
             ease: 'none',
             scrollTrigger: {
               trigger: bgRef.current.parentElement,
@@ -33,42 +33,51 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen min-h-[640px] flex items-center overflow-hidden pt-[72px]">
+    <section className="relative h-screen min-h-[680px] flex items-end overflow-hidden pt-[76px]">
       <div
         ref={bgRef}
         className="absolute inset-0 -z-10 will-change-transform"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600)',
+          backgroundImage: 'url(/hero.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
+        role="img"
+        aria-label="Sol résine époxy métallique décoratif — réalisation SurfaceBéton"
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/85" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink/70 via-ink/60 to-ink/90" />
 
-      <div className="container-x w-full">
-        <div className="hero-fade hero-fade-1 inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-white text-xs tracking-wider uppercase mb-7">
-          <span className="text-accent">●</span> Certifié Meta Blueprint · Île-de-France
+      <div className="container-x w-full pb-24 md:pb-28">
+        <div className="hero-fade hero-fade-1 flex items-center gap-3 mb-8">
+          <span className="h-[1px] w-10 bg-accent" />
+          <span className="text-white/80 text-[11px] uppercase tracking-[0.22em] font-semibold">
+            Île-de-France · Depuis 15 ans
+          </span>
         </div>
 
-        <h1 className="hero-fade hero-fade-2 font-serif font-semibold text-white leading-[1.04] tracking-tight max-w-5xl mb-6"
-            style={{ fontSize: 'clamp(40px, 7vw, 72px)' }}>
-          Le sol qui transforme<br />
-          <span className="text-accent italic">vos espaces</span>
+        <h1 className="hero-fade hero-fade-2 h-hero max-w-5xl mb-8">
+          Le sol qui donne du <span className="italic-serif text-accent">caractère</span><br className="hidden md:block" /> à vos espaces.
         </h1>
 
-        <p className="hero-fade hero-fade-3 text-lg md:text-xl text-white/85 max-w-2xl mb-10 leading-relaxed font-light">
-          Spécialiste des revêtements de sols haut de gamme en résine
-          polyuréthane et époxy. Intervention en Île-de-France.
+        <p className="hero-fade hero-fade-3 text-lg md:text-xl text-white/80 max-w-2xl mb-10 leading-relaxed font-light">
+          Résine époxy et polyuréthane, sols décoratifs, étanchéité liquide et
+          peinture thermique Cool Roof — le savoir-faire des applicateurs certifiés SurfaceBéton.
         </p>
 
         <div className="hero-fade hero-fade-4 flex flex-wrap gap-4">
           <Link href="/contact" className="btn-primary">
             Demander un devis gratuit
           </Link>
-          <Link href="/realisations" className="btn-outline">
+          <Link href="/realisations" className="btn-outline-light">
             Voir nos réalisations
           </Link>
         </div>
+      </div>
+
+      {/* Editorial bottom info bar */}
+      <div className="absolute bottom-0 left-0 right-0 hidden md:flex items-center justify-between px-10 pb-6 text-white/60 text-[11px] uppercase tracking-[0.2em] font-medium">
+        <span>SB — 2010 / {new Date().getFullYear()}</span>
+        <span>N° 01 · Résine haut de gamme</span>
       </div>
     </section>
   );

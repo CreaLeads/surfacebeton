@@ -3,10 +3,10 @@
 import { useEffect, useRef } from 'react';
 
 const stats = [
-  { value: 100, suffix: '+', label: 'Projets réalisés' },
+  { value: 100, suffix: '+', label: 'Projets livrés' },
   { value: 15, suffix: '+', label: "Années d'expertise" },
   { value: 10, suffix: ' ans', label: 'Garantie' },
-  { value: 48, suffix: 'h', label: 'Délai de réponse' },
+  { value: 48, suffix: 'h', label: 'Devis' },
 ];
 
 export default function Stats() {
@@ -28,7 +28,7 @@ export default function Stats() {
 
         gsap.fromTo(
           items,
-          { y: 30, opacity: 0 },
+          { y: 24, opacity: 0 },
           {
             y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', stagger: 0.1,
             scrollTrigger: { trigger: root, start: 'top 85%' },
@@ -51,7 +51,7 @@ export default function Stats() {
           lines,
           { width: 0 },
           {
-            width: 40, duration: 0.7, ease: 'power2.out', delay: 0.4,
+            width: 32, duration: 0.7, ease: 'power2.out', delay: 0.4,
             scrollTrigger: { trigger: root, start: 'top 85%' },
           }
         );
@@ -61,16 +61,16 @@ export default function Stats() {
   }, []);
 
   return (
-    <section className="border-y border-line bg-white">
+    <section className="bg-white border-y border-line" aria-label="Chiffres clés">
       <div ref={ref} className="container-x grid grid-cols-2 md:grid-cols-4 divide-x divide-line">
         {stats.map((s) => (
-          <div key={s.label} data-stat className="py-12 px-6 text-center">
-            <div className="font-serif text-4xl md:text-5xl font-semibold text-navy tracking-tight">
+          <div key={s.label} data-stat className="py-14 px-6 text-center">
+            <div className="font-display text-4xl md:text-5xl font-medium text-ink tracking-tight">
               <span data-stat-num data-stat-num={s.value}>0</span>
               <span>{s.suffix}</span>
             </div>
-            <span data-stat-line className="block h-[2px] bg-accent mx-auto mt-3" style={{ width: 0 }} />
-            <div className="text-xs md:text-sm text-muted mt-3 uppercase tracking-wider">{s.label}</div>
+            <span data-stat-line className="block h-[2px] bg-accent mx-auto mt-4" style={{ width: 0 }} />
+            <div className="text-[11px] text-muted mt-4 uppercase tracking-[0.2em] font-medium">{s.label}</div>
           </div>
         ))}
       </div>

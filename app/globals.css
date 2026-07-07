@@ -3,17 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --navy: #1B2A4A;
+  --ink: #0A0E1A;
+  --navy: #12203E;
+  --graphite: #1E293B;
   --accent: #EA580C;
   --accent-dark: #C2410C;
+  --accent-soft: #FFF7ED;
+  --gold: #B45309;
   --muted: #64748B;
-  --soft: #F8FAFC;
-  --line: #E2E8F0;
+  --soft: #F7F5F1;
+  --line: #E5E1DA;
+  --cream: #FBFAF7;
 }
 
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html {
@@ -22,106 +28,140 @@ html {
 
 body {
   background: #FFFFFF;
-  color: #1B2A4A;
+  color: var(--ink);
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+::selection {
+  background: var(--accent);
+  color: #FFFFFF;
 }
 
 .container-x {
-  @apply max-w-7xl mx-auto px-6 lg:px-10;
+  @apply max-w-[1280px] mx-auto px-6 lg:px-10;
 }
 
-/* Buttons */
+.container-narrow {
+  @apply max-w-[960px] mx-auto px-6 lg:px-10;
+}
+
+/* ===== Buttons ===== */
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 bg-accent text-white font-semibold px-7 py-3.5 rounded-md hover:bg-accent-dark transition-all hover:shadow-lg hover:shadow-orange-900/15 hover:-translate-y-0.5;
+  @apply inline-flex items-center justify-center gap-2 bg-accent text-white text-[15px] font-semibold px-7 py-3.5 rounded-md hover:bg-accent-dark transition-all hover:shadow-lg hover:shadow-orange-900/20 hover:-translate-y-0.5;
 }
 
-.btn-outline {
-  @apply inline-flex items-center justify-center gap-2 border border-white/80 text-white font-semibold px-7 py-3.5 rounded-md hover:bg-white hover:text-navy transition-all;
+.btn-outline-light {
+  @apply inline-flex items-center justify-center gap-2 border border-white/70 text-white text-[15px] font-semibold px-7 py-3.5 rounded-md hover:bg-white hover:text-ink transition-all;
 }
 
-.btn-outline-navy {
-  @apply inline-flex items-center justify-center gap-2 border border-navy text-navy font-semibold px-7 py-3.5 rounded-md hover:bg-navy hover:text-white transition-all;
+.btn-outline-dark {
+  @apply inline-flex items-center justify-center gap-2 border border-ink/80 text-ink text-[15px] font-semibold px-7 py-3.5 rounded-md hover:bg-ink hover:text-white transition-all;
 }
 
-/* Section labels */
-.section-label {
-  @apply inline-block uppercase tracking-[0.18em] text-xs font-semibold text-accent mb-4;
+.btn-ghost {
+  @apply inline-flex items-center gap-1.5 text-accent font-semibold text-sm hover:gap-2.5 transition-all;
 }
 
-/* Section titles */
-.section-title {
-  @apply font-serif text-4xl md:text-5xl font-bold text-navy leading-tight tracking-tight;
+/* ===== Editorial section labels ===== */
+.eyebrow {
+  @apply inline-flex items-center gap-2 uppercase tracking-[0.22em] text-[11px] font-semibold text-accent mb-5;
+}
+.eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+  display: inline-block;
+}
+
+/* ===== Editorial titles ===== */
+.h-display {
+  @apply font-display font-normal text-ink leading-[1.05] tracking-[-0.025em];
+  font-size: clamp(36px, 5vw, 60px);
+}
+
+.h-title {
+  @apply font-display font-normal text-ink leading-[1.1] tracking-[-0.02em];
+  font-size: clamp(28px, 3.5vw, 42px);
+}
+
+.h-hero {
+  @apply font-display font-normal text-white leading-[1.02] tracking-[-0.03em];
+  font-size: clamp(42px, 7.5vw, 84px);
+}
+
+.italic-serif {
+  @apply italic;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-variation-settings: 'SOFT' 100, 'WONK' 1;
 }
 
 .section-subtitle {
-  @apply text-base md:text-lg text-muted max-w-2xl mt-4 leading-relaxed;
+  @apply text-[17px] text-muted max-w-2xl leading-[1.6];
 }
 
-/* Animated underline under H2 */
-.title-underline {
+/* Divider — thin editorial rule under headings */
+.rule-accent {
   display: inline-block;
-  height: 3px;
-  width: 0;
+  height: 2px;
+  width: 40px;
   background: var(--accent);
-  margin-top: 16px;
-  border-radius: 2px;
-  will-change: width;
+  margin-top: 20px;
 }
 
-/* Card */
+/* ===== Card ===== */
 .card-base {
-  @apply bg-white border border-line shadow-card hover:shadow-card-hover transition-all duration-300;
+  @apply bg-white border border-line shadow-card transition-all duration-300 hover:shadow-card-hover;
   border-radius: 8px;
 }
 
-/* Range slider */
+/* ===== Range slider ===== */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-  height: 4px;
-  background: #E2E8F0;
+  height: 3px;
+  background: var(--line);
   border-radius: 2px;
   outline: none;
 }
-
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 20px;
   height: 20px;
-  background: #EA580C;
+  background: var(--accent);
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.35);
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.35);
 }
-
 input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
-  background: #EA580C;
+  background: var(--accent);
   border-radius: 50%;
   cursor: pointer;
   border: none;
-  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.35);
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.35);
 }
 
-/* Animated gradient CTA */
+/* ===== Backgrounds ===== */
+.bg-editorial {
+  background:
+    radial-gradient(ellipse at top left, rgba(234,88,12,0.03), transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(18,32,62,0.04), transparent 60%),
+    var(--cream);
+}
+
 .cta-gradient {
-  background: linear-gradient(120deg, #1B2A4A 0%, #1B2A4A 35%, #25365E 50%, #1B2A4A 65%, #1B2A4A 100%);
+  background:
+    linear-gradient(120deg, var(--ink) 0%, var(--navy) 40%, var(--graphite) 60%, var(--ink) 100%);
   background-size: 200% 200%;
-  animation: gradientShift 12s ease infinite;
 }
 
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* Hero CSS-only intro — text always visible (opacity:1 by default),
-   only a subtle slide-up enhancement that won't hide content if the
-   animation engine doesn't run (e.g. headless / reduced-motion). */
+/* ===== Hero visible-by-default ===== */
 .hero-fade {
   opacity: 1;
-  animation: heroSlide 0.8s ease both;
+  animation: heroSlide 0.9s ease both;
 }
 .hero-fade-1 { animation-delay: 0.05s; }
 .hero-fade-2 { animation-delay: 0.15s; }
@@ -135,9 +175,34 @@ input[type="range"]::-moz-range-thumb {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-fade { animation: none; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-/* Will-change defaults for animated elements */
+/* Logo mark draw */
+.logo-mark path {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  animation: markDraw 1.4s ease-out 0.1s forwards;
+}
+@keyframes markDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Editorial number tag */
+.tag-num {
+  @apply font-display italic text-accent/80;
+  font-size: 14px;
+}
+
+/* Marquee (trust bar) */
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
 [data-reveal-item],
 [data-gallery-card],
 [data-stat] {

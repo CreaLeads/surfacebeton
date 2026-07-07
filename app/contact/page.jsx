@@ -4,12 +4,10 @@ import { useState, useEffect } from 'react';
 import PageHeader from '@/components/PageHeader';
 
 const projectTypes = [
-  'Résine Polyuréthane',
-  'Résine Époxy',
+  'Résine Époxy & Polyuréthane',
+  'Sols Décoratifs',
   'Étanchéité Liquide',
-  'Cool Roof',
-  'Formation',
-  'Distribution',
+  'ThermicRoof — Peinture Thermique',
   'Autre',
 ];
 
@@ -26,8 +24,9 @@ export default function ContactPage() {
   useEffect(() => {
     const url = new URL(window.location.href);
     const sol = url.searchParams.get('solution');
-    if (sol && projectTypes.includes(sol)) {
-      setForm((f) => ({ ...f, projet: sol }));
+    if (sol) {
+      const match = projectTypes.find((t) => t === sol || t.toLowerCase().includes(sol.toLowerCase())) || projectTypes[0];
+      setForm((f) => ({ ...f, projet: match }));
     }
   }, []);
 
@@ -45,8 +44,9 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader
-        title="Demandez votre devis"
-        subtitle="Réponse sous 48h — gratuit et sans engagement."
+        eyebrow="Prenons contact"
+        title="Demandez votre devis gratuit."
+        subtitle="Réponse sous 48h — gratuit et sans engagement. Île-de-France."
         breadcrumb="Contact"
       />
 
@@ -54,21 +54,23 @@ export default function ContactPage() {
         <div className="container-x grid grid-cols-1 lg:grid-cols-3 gap-12">
           <form
             onSubmit={onSubmit}
-            className="lg:col-span-2 bg-soft p-8 md:p-10 rounded-3xl border border-slate-100 space-y-5"
+            className="lg:col-span-2 bg-soft p-8 md:p-12 rounded-xl border border-line space-y-5"
+            aria-label="Formulaire de demande de devis"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <Field label="Nom complet *" required value={form.nom} onChange={handle('nom')} />
-              <Field label="Téléphone *" type="tel" required value={form.telephone} onChange={handle('telephone')} />
+              <Field label="Nom complet *" required value={form.nom} onChange={handle('nom')} name="nom" autoComplete="name" />
+              <Field label="Téléphone *" type="tel" required value={form.telephone} onChange={handle('telephone')} name="telephone" autoComplete="tel" />
             </div>
-            <Field label="Email *" type="email" required value={form.email} onChange={handle('email')} />
+            <Field label="Email *" type="email" required value={form.email} onChange={handle('email')} name="email" autoComplete="email" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <label className="block font-semibold text-navy text-sm mb-2">Type de projet</label>
+                <label htmlFor="projet" className="block font-semibold text-ink text-sm mb-2">Type de projet</label>
                 <select
+                  id="projet"
                   value={form.projet}
                   onChange={handle('projet')}
-                  className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-navy focus:border-accent focus:outline-none"
+                  className="w-full bg-white border border-line rounded-md px-4 py-3 text-ink focus:border-accent focus:outline-none"
                 >
                   {projectTypes.map((t) => <option key={t}>{t}</option>)}
                 </select>
@@ -78,17 +80,20 @@ export default function ContactPage() {
                 type="number"
                 value={form.surface}
                 onChange={handle('surface')}
+                name="surface"
+                inputMode="numeric"
               />
             </div>
 
             <div>
-              <label className="block font-semibold text-navy text-sm mb-2">Message *</label>
+              <label htmlFor="message" className="block font-semibold text-ink text-sm mb-2">Message *</label>
               <textarea
+                id="message"
                 required
                 rows={5}
                 value={form.message}
                 onChange={handle('message')}
-                className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-navy focus:border-accent focus:outline-none resize-none"
+                className="w-full bg-white border border-line rounded-md px-4 py-3 text-ink focus:border-accent focus:outline-none resize-none"
                 placeholder="Décrivez votre projet : type de support, état actuel, délais souhaités..."
               />
             </div>
@@ -99,29 +104,29 @@ export default function ContactPage() {
           </form>
 
           <aside className="space-y-6">
-            <div className="bg-navy text-white p-8 rounded-3xl">
-              <h3 className="text-xl font-bold mb-6">Nous contacter</h3>
-              <div className="space-y-4 text-sm">
+            <div className="bg-ink text-white p-8 rounded-xl">
+              <h2 className="font-display text-xl font-medium mb-6">Nous joindre</h2>
+              <div className="space-y-5 text-sm">
                 <div>
-                  <div className="text-white/60 text-xs uppercase tracking-wider mb-1">Email</div>
-                  <a href="mailto:surfacebeton@icloud.com" className="text-white hover:text-accent">
-                    📧 surfacebeton@icloud.com
+                  <div className="text-white/50 text-[10px] uppercase tracking-[0.2em] mb-1.5">Email</div>
+                  <a href="mailto:surfacebeton@icloud.com" className="text-white hover:text-accent transition-colors">
+                    surfacebeton@icloud.com
                   </a>
                 </div>
                 <div>
-                  <div className="text-white/60 text-xs uppercase tracking-wider mb-1">Zone</div>
-                  <div className="text-white">📍 Île-de-France</div>
+                  <div className="text-white/50 text-[10px] uppercase tracking-[0.2em] mb-1.5">Zone d'intervention</div>
+                  <div className="text-white">Île-de-France</div>
                 </div>
                 <div>
-                  <div className="text-white/60 text-xs uppercase tracking-wider mb-1">Horaires</div>
-                  <div className="text-white">🕐 Lun-Ven 8h-18h</div>
-                  <div className="text-white">Sam 9h-12h</div>
+                  <div className="text-white/50 text-[10px] uppercase tracking-[0.2em] mb-1.5">Horaires</div>
+                  <div className="text-white">Lun-Ven 8h-18h</div>
+                  <div className="text-white/70">Sam 9h-12h</div>
                 </div>
               </div>
             </div>
-            <div className="bg-accent text-white p-6 rounded-2xl">
-              <div className="font-bold text-lg mb-1">⚡ Réponse sous 48h</div>
-              <p className="text-sm text-white/85">Devis gratuit et sans engagement.</p>
+            <div className="bg-accent text-white p-8 rounded-xl">
+              <div className="font-display text-lg font-medium mb-2">Réponse sous 48h</div>
+              <p className="text-sm text-white/90 leading-relaxed">Devis gratuit et sans engagement. Étude technique de votre projet.</p>
             </div>
           </aside>
         </div>
@@ -130,16 +135,21 @@ export default function ContactPage() {
   );
 }
 
-function Field({ label, type = 'text', value, onChange, required }) {
+function Field({ label, type = 'text', value, onChange, required, name, autoComplete, inputMode }) {
+  const id = name || label.toLowerCase().replace(/\s+/g, '-');
   return (
     <div>
-      <label className="block font-semibold text-navy text-sm mb-2">{label}</label>
+      <label htmlFor={id} className="block font-semibold text-ink text-sm mb-2">{label}</label>
       <input
+        id={id}
+        name={name}
         type={type}
         required={required}
         value={value}
         onChange={onChange}
-        className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-navy focus:border-accent focus:outline-none"
+        autoComplete={autoComplete}
+        inputMode={inputMode}
+        className="w-full bg-white border border-line rounded-md px-4 py-3 text-ink focus:border-accent focus:outline-none"
       />
     </div>
   );

@@ -7,60 +7,61 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        navy: '#1B2A4A',
+        ink: '#0A0E1A',
+        navy: '#12203E',
+        graphite: '#1E293B',
         accent: '#EA580C',
         'accent-dark': '#C2410C',
+        'accent-soft': '#FFF7ED',
+        gold: '#B45309',
         muted: '#64748B',
-        soft: '#F8FAFC',
-        line: '#E2E8F0',
+        soft: '#F7F5F1',
+        line: '#E5E1DA',
+        cream: '#FBFAF7',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
+        sans: ['var(--font-manrope)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-fraunces)', 'Georgia', 'serif'],
       },
       fontSize: {
-        'display': ['72px', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
-        'display-md': ['56px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'display-sm': ['40px', { lineHeight: '1.15', letterSpacing: '-0.015em' }],
+        'hero': ['clamp(42px, 7.5vw, 88px)', { lineHeight: '1.02', letterSpacing: '-0.03em' }],
+        'display': ['clamp(36px, 5vw, 64px)', { lineHeight: '1.05', letterSpacing: '-0.025em' }],
+        'title': ['clamp(28px, 3.5vw, 44px)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
       },
       boxShadow: {
-        card: '0 1px 3px rgba(0,0,0,0.08)',
-        'card-hover': '0 8px 24px rgba(15,23,42,0.10)',
-        nav: '0 1px 0 #E2E8F0',
+        card: '0 1px 2px rgba(15,23,42,0.04), 0 1px 3px rgba(15,23,42,0.06)',
+        'card-hover': '0 12px 30px rgba(15,23,42,0.10), 0 4px 8px rgba(15,23,42,0.06)',
+        premium: '0 30px 60px -20px rgba(10,14,26,0.35)',
       },
       borderRadius: {
-        DEFAULT: '6px',
+        DEFAULT: '4px',
         md: '6px',
         lg: '8px',
+        xl: '12px',
       },
       keyframes: {
-        fadeInUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+        heroSlide: {
+          from: { transform: 'translate3d(0, 14px, 0)' },
+          to: { transform: 'translate3d(0, 0, 0)' },
         },
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+        markDraw: {
+          '0%': { strokeDashoffset: '240' },
+          '100%': { strokeDashoffset: '0' },
         },
-        gradientShift: {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
         pulseSubtle: {
           '0%, 100%': { transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(234,88,12,0.45)' },
           '50%': { transform: 'scale(1.02)', boxShadow: '0 0 0 12px rgba(234,88,12,0)' },
         },
-        logoIn: {
-          '0%': { transform: 'rotate(-5deg)', opacity: '0' },
-          '100%': { transform: 'rotate(0deg)', opacity: '1' },
-        },
       },
       animation: {
-        'fade-up': 'fadeInUp 0.8s ease both',
-        'fade-in': 'fadeIn 0.8s ease both',
-        'gradient-shift': 'gradientShift 8s ease infinite',
+        'hero-slide': 'heroSlide 0.8s ease both',
+        'mark-draw': 'markDraw 1.4s ease-out forwards',
+        'marquee': 'marquee 40s linear infinite',
         'pulse-subtle': 'pulseSubtle 2.4s ease-in-out infinite',
-        'logo-in': 'logoIn 0.6s ease both',
       },
     },
   },
