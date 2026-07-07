@@ -1,13 +1,13 @@
 export const metadata = {
-  title: 'ThermicRoof — Peinture thermique Cool Roof haute performance',
+  title: 'ThermicRoof — Revêtement thermo-réflectif à l\'aérogel de silice',
   description:
-    "Peinture thermique ThermicRoof : réduction jusqu'à 30°C sur toitures, -25% sur la climatisation, résistance UV extrême. Solution Cool Roof pour toitures industrielles, entrepôts et bâtiments tertiaires en Île-de-France.",
-  keywords: ['ThermicRoof', 'peinture thermique', 'cool roof', 'peinture réfléchissante', 'toiture froide', 'peinture isolante toiture'],
+    "ThermicRoof : revêtement thermo-réflectif à base d'aérogel de silice. 85% de réflexion solaire, -7°C à l'intérieur l'été, SRI 110, FDES certifié INIES. Toiture, façade, industrie — Île-de-France.",
+  keywords: ['ThermicRoof', 'revêtement thermo-réflectif', 'aérogel de silice', 'cool roof', 'peinture thermique toiture', 'SRI 110', 'peinture réfléchissante'],
   alternates: { canonical: '/distribution' },
   openGraph: {
-    title: 'ThermicRoof — Peinture thermique Cool Roof — SurfaceBéton',
+    title: 'ThermicRoof — Revêtement thermo-réflectif · SurfaceBéton',
     description:
-      "Peinture thermique réflective : jusqu'à -30°C sur vos toitures. Économies d'énergie mesurées. Applicable bac acier, membrane, béton, bitume.",
+      "Votre toiture travaille pour vous. 85% de réflexion solaire, -7°C l'été, aérogel de silice. Étude thermique gratuite.",
     url: '/distribution',
     images: ['/industrie-parfumerie.jpg'],
   },

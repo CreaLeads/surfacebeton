@@ -30,17 +30,17 @@ const items = [
     desc: "Membrane monocomposant sans joint pour toitures-terrasses, balcons, parkings dalle et bassins.",
     keywords: ['étanchéité liquide', 'étanchéité toiture', 'étanchéité terrasse'],
     img: '/cool-roof-application.png',
-    alt: 'Application d\'étanchéité liquide sur toiture-terrasse',
+    alt: "Application d'étanchéité liquide en résine polyuréthane sur toiture",
     href: '/solutions#etancheite',
   },
   {
     tag: '04',
-    title: 'ThermicRoof · Cool Roof',
-    desc: "Peinture thermique réflective : jusqu'à 30°C de réduction sur toitures industrielles et commerciales.",
-    keywords: ['cool roof', 'peinture thermique', 'peinture réfléchissante toiture'],
+    title: 'ThermicRoof — thermo-réflectif',
+    desc: "Revêtement à l'aérogel de silice : 85% de réflexion solaire, -7°C à l'intérieur l'été, SRI 110.",
+    keywords: ['ThermicRoof', 'peinture thermique', 'cool roof', 'aérogel de silice'],
     img: '/industrie-parfumerie.jpg',
-    alt: 'Toiture industrielle traitée avec peinture thermique ThermicRoof Cool Roof',
-    href: '/solutions#thermicroof',
+    alt: 'Toiture industrielle traitée au revêtement thermo-réflectif ThermicRoof',
+    href: '/distribution',
   },
 ];
 

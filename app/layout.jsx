@@ -27,7 +27,7 @@ export const metadata = {
     template: '%s | SurfaceBéton',
   },
   description:
-    "Spécialiste des revêtements de sols en résine époxy et polyuréthane, sols décoratifs, étanchéité liquide et peinture thermique ThermicRoof. Devis gratuit sous 48h en Île-de-France.",
+    "Spécialiste des revêtements de sols en résine époxy et polyuréthane, sols décoratifs, étanchéité liquide et revêtement thermo-réflectif ThermicRoof à l'aérogel de silice. Devis gratuit sous 48h en Île-de-France.",
   keywords: [
     'résine époxy',
     'sol résine',
@@ -35,6 +35,9 @@ export const metadata = {
     'résine polyuréthane',
     'revêtement de sol résine',
     'résine professionnel',
+    'ThermicRoof',
+    'revêtement thermo-réflectif',
+    'aérogel de silice',
     'cool roof',
     'peinture thermique',
     'étanchéité liquide',
@@ -103,7 +106,7 @@ const jsonLd = {
   name: 'SurfaceBéton',
   image: `${SITE_URL}/hero.jpg`,
   url: SITE_URL,
-  telephone: '',
+  telephone: '+33663675254',
   email: 'surfacebeton@icloud.com',
   priceRange: '€€',
   description:
@@ -140,7 +143,7 @@ const jsonLd = {
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Résine époxy & polyuréthane', description: 'Sols techniques en résine époxy et polyuréthane pour particuliers, professionnels et industriels.' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sols décoratifs — flake, quartz, effet marbré', description: 'Sols décoratifs haut de gamme pour intérieurs, garages, terrasses.' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Étanchéité liquide', description: 'Étanchéité liquide sans joint pour toitures-terrasses, balcons, parkings.' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Peinture thermique Cool Roof — ThermicRoof', description: 'Peinture thermique réflective ThermicRoof — réduction jusqu\'à 30°C sur toitures.' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'ThermicRoof — Revêtement thermo-réflectif', description: 'Revêtement à l\'aérogel de silice. 85% de réflexion solaire, -7°C à l\'intérieur l\'été, SRI 110. Toiture, façade, industrie.' } },
   ],
   sameAs: [],
 };

@@ -43,6 +43,11 @@ export default function Footer() {
           <h4 className="font-display text-white text-[15px] mb-5">Contact</h4>
           <ul className="space-y-3 text-white/60 text-sm">
             <li>
+              <a href="tel:+33663675254" className="hover:text-accent transition-colors">
+                06 63 67 52 54
+              </a>
+            </li>
+            <li>
               <a href="mailto:surfacebeton@icloud.com" className="hover:text-accent transition-colors">
                 surfacebeton@icloud.com
               </a>

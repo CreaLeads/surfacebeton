@@ -108,6 +108,12 @@ export default function ContactPage() {
               <h2 className="font-display text-xl font-medium mb-6">Nous joindre</h2>
               <div className="space-y-5 text-sm">
                 <div>
+                  <div className="text-white/50 text-[10px] uppercase tracking-[0.2em] mb-1.5">Téléphone</div>
+                  <a href="tel:+33663675254" className="text-white hover:text-accent transition-colors">
+                    06 63 67 52 54
+                  </a>
+                </div>
+                <div>
                   <div className="text-white/50 text-[10px] uppercase tracking-[0.2em] mb-1.5">Email</div>
                   <a href="mailto:surfacebeton@icloud.com" className="text-white hover:text-accent transition-colors">
                     surfacebeton@icloud.com
